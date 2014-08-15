@@ -1,0 +1,66 @@
+			<p >&nbsp; </p>
+			<p >&nbsp; </p>
+			<div class="container">
+			<form role="form" method="POST" class="form-horizontal" action="/user/create">
+
+				<% if(flash && flash.err) { %>
+					<ul class="alert alert-success">
+					<% Object.keys(flash.err).forEach(function(error){ %>
+						<li> <%- JSON.stringify(flash.err[error]) %></li>
+						<% }) %>
+				</ul>
+				<% } %>
+				<div class="basic-grey">
+						<h2 class="form-signin-heading">Registrarse</h2>
+					<div class="basic-grey">
+						 <label for="username">Username</label>
+						 <input type="text"   id="username" name='username' placeholder="Enter Username" />
+				    </div>
+				
+					<div class="basic-grey">
+						<label for="password">Password</label>
+						<input type="password"  name='password' id="password"placeholder="Enter Password"  />
+					</div>
+					
+				
+					<div class="basic-grey">
+						 <label for="email">Email address</label>
+						 <input type="email"  name="email" id="email" placeholder="Enter Email"  />
+					</div>
+
+					<div class="basic-grey">
+						 <label for="name">Name</label>
+						 <input type="text"  id="name" name="name" placeholder="Enter Name"   />
+					</div>
+
+					<div class="basic-grey">
+						 <label for="last_name">Last Name</label>
+						 <input type="text" name= "last_name" id="last_name" placeholder="Enter Last Name"   />
+					</div>
+
+					<div class="basic-grey">
+						 <label for="age">age</label>
+						 <input  type="number"  name="age" id="age" placeholder="Enter Age"  size"3"  />
+					</div>
+
+					<div class="basic-grey">
+						 <label for="country">Country</label>
+						 <input type="text"  name="country" id="country" placeholder="Enter Country"  />
+					</div>
+
+					<div class="basic-grey">
+						 <label for="genere">Genere</label>
+						 <!--<input type="text" class="form-control" name="genere" id="genere" placeholder="Enter Genere"  />-->
+						 <select name="genere" >
+					       <option value="M" selected>M</option>
+					       <option value="F">F</option>
+	      				</select>
+					</div>
+
+						 <input type="submit" class="basic-grey"/>
+ 						 <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+				</div>
+
+			
+			</form>
+</div>
