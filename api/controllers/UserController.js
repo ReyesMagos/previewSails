@@ -11,9 +11,9 @@ module.exports = {
 	//crea un usuario con todos los parametros que se le pasan desde el formulario
 	'new':function (req,res) {
 		// body...
-		res.locals.flash=_.clone(req.session.flash);
+		//res.locals.flash=_.clone(req.session.flash);
 		res.view();
-		req.session.flash={};
+		//req.session.flash={};
 	},
 	create: function (req,res,next) {
 		// body...
