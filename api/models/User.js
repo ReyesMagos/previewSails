@@ -14,32 +14,44 @@ module.exports = {
   		type: 'string',
   		unique: true
   	},
+
   	password:{
   		type:'string',
   		required:true
   	},
+
   	email:{
   		type:'email',
   		required:true
   	},
+
   	name:{
   		type:'string',
   		required:true
   	},
+
   	last_name:{
   		type:'string',
   		required:true
-  	},age:{
+  	},
+
+    age:{
   		type:'integer',
   		defaultsTo:18
-  	}, country:{
+  	}, 
+
+    country:{
   		type:'string',
   		required:true
-  	}, genere:{
+  	},
+
+     genere:{
   		type:'string',
   		enum:['F','M'],
   		required:true
-  	},encryptedPassword:{
+  	},
+
+    encryptedPassword:{
       type:'string'
    }
 

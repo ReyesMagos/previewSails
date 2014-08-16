@@ -1,7 +1,8 @@
 			<p >&nbsp; </p>
 			<p >&nbsp; </p>
-			<div class="container">
-			<form role="form" method="POST" class="form-horizontal" action="/user/create">
+			 
+			<div class="container"> 
+			<form role="form" method="POST"  id="form-signin"  name="form-signin" class="form-horizontal" action="/user/create">
 
 				<% if(flash && flash.err) { %>
 					<ul class="alert alert-success">
@@ -20,6 +21,11 @@
 					<div class="basic-grey">
 						<label for="password">Password</label>
 						<input type="password"  name='password' id="password"placeholder="Enter Password"  />
+					</div>
+
+					<div class="basic-grey">
+						<label for="password">Confirmation</label>
+						<input type="password"  name='confirmation' id="confirmation" placeholder="Password Confirmation"  />
 					</div>
 					
 				
@@ -60,7 +66,7 @@
 						 <input type="submit" class="basic-grey"/>
  						 <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 				</div>
-
+			
 			
 			</form>
 </div>
