@@ -1,8 +1,8 @@
 			<p >&nbsp; </p>
 			<p >&nbsp; </p>
 <div class="container">
-	<h1> Nombre: <%- user.name %> , Apellido: <%- user.last_name %>  </h1>
+	<h1> Nombre: <%= user.name %> , Apellido: <%- user.last_name %>  </h1>
 	<hr>
-	<h3> Contacto: <%- user.email %> </h3>
+	<h3> Contacto: <%= user.email %> </h3>
 	<a href="/user/edit/<%= user.id %>">Editar</a>
 </div>
