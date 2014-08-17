@@ -1,0 +1,29 @@
+	<p >&nbsp; </p>
+			<p >&nbsp; </p>
+<div class="container">
+	<form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
+		<div class="page-header">
+			<h2> Editar </h2>
+		</div>
+		<label >Usuario</label>
+		<input value="<%= user.username %>" name="username" type="text" class="form-control"/>
+		<label >Emali</label>
+		<input value="<%= user.email %>" name="email" type="email" class="form-control"/>
+		<label >Nombre</label>
+		<input value="<%= user.name %>" name="name" type="text" class="form-control"/>
+		<label >Apellido</label>
+		<input value="<%= user.last_name %>" name="last_name" type="text" class="form-control"/>
+		<label >Edad</label>
+		<input value="<%= user.age %>" name="age" type="number" class="form-control"/>
+		<label >Pais</label>
+		<input value="<%= user.country %>" name="country" type="text" class="form-control"/>
+		<label >Genero</label>
+		<select name="genere" >
+		<option value="M" selected>M</option>
+		<option value="F">F</option>
+		</select>
+		 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Guardar"/>
+	 	 <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+	</form>
+</div>

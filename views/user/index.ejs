@@ -2,11 +2,12 @@
 			<p >&nbsp; </p>
 <div class="container">
 	<h3> Usuarios</h3>
-	<table class="table">
-		<tr>
+	<table class="table table-striped">
+		
 			<th>ID</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
+			<th>Usuario</th>
 			<th>Email</th>
 			<th>Age</th>
 			<th>Country</th>
@@ -15,12 +16,13 @@
 			<th></th>
 			<th></th>
 
-		</tr>
+	
 		<% _.each(users, function(user) { %>
 		<tr>
 			<td> <%= user.id %></td>
 			<td> <%= user.name %></td>
 			<td> <%= user.last_name %></td>
+			<td> <%= user.username %></td>
 			<td> <%= user.email %></td>
 			<td> <%= user.age %></td>
 			<td> <%= user.country %></td>

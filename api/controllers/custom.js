@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	// body...
 
-	$('.form-signin').validate({
+	$('#form-signin').validate({
 		rules:{
 			username:{
   		type: 'string',
