@@ -1,0 +1,50 @@
+	<p >&nbsp; </p>
+			<p >&nbsp; </p>
+<div class="container">
+	<h3> Usuarios</h3>
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Email</th>
+			<th>Age</th>
+			<th>Country</th>
+			<th>Genere</th>
+			<th></th>
+			<th></th>
+			<th></th>
+
+		</tr>
+		<% _.each(users, function(user) { %>
+		<tr>
+			<td> <%= user.id %></td>
+			<td> <%= user.name %></td>
+			<td> <%= user.last_name %></td>
+			<td> <%= user.email %></td>
+			<td> <%= user.age %></td>
+			<td> <%= user.country %></td>
+			<td> <%= user.genere %></td>
+			<td> <a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Ver</a></td>
+			<td> <a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Editar</a></td>
+			<td> <a href="/user/destroy/<%= user.id %>" class="btn btn-sm btn-danger">Borrar</a></td>
+
+		</tr>
+		<% }) %>	
+
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

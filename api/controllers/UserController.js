@@ -37,11 +37,25 @@ module.exports = {
 	},
 	show:function  (req,res,next) {
 		// body...
+		//get one user
 		User.findOne(req.param('id'), function foundUser(err, user)  {
 			if(err) return next(err);
 			if(!user) return next();
 			res.view({
 				user:user
+			});
+		});
+	},
+
+	index: function (req, res, next) {
+		// body...
+		//get an array of all users
+		User.find(function foundUsers (err, users) {
+			if(err) return next(err);
+
+			res.view({
+
+				users:users
 			});
 		});
 	}
