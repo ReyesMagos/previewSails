@@ -1,0 +1,33 @@
+	<p >&nbsp; </p>
+	<p >&nbsp; </p>
+
+		<div class="container">
+
+
+			<form method="POST" class="form-signin" action="/session/create">
+				
+			<h1 class="form-signin-heading"> Inicio de Sesion</h1>
+
+				<% if(flash && flash.err) { %>
+					<ul class="alert alert-success">
+					<% Object.keys(flash.err).forEach(function(error){ %>
+						<li> <%- JSON.stringify(flash.err[error]) %></li>
+						<% }) %>
+				</ul>
+				<% } %>
+
+				 <label>Username</label>
+				 <input type="text"   id="username"  class="form-control" name='username' placeholder="Enter Username" />
+
+				
+				<label>Password</label>
+				<input type="password"  name='password'  class="form-control"id="password"placeholder="Enter Password"  />
+
+				 <input type="submit" class="btn btn-lg btn-primary btn-block" value"Registrar"/>
+ 				 <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+
+			
+		
+			</form>
+		</div>
