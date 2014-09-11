@@ -1,7 +1,7 @@
 
     $(document).ready(function () {
 	// body...
-	$('.form-signin').validate({
+	$('.form-signin2').validate({
 		rules:{
 			username:{
 		  		minlength:6,

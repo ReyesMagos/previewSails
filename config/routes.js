@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'static/singUp'
+    controller: "SessionController", action: "new"
   },
 
     '/user/form': {

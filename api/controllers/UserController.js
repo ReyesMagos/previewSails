@@ -12,6 +12,7 @@ module.exports = {
 	'new':function (req,res) {
 		// body...
 		//res.locals.flash=_.clone(req.session.flash);
+		
 		res.view();
 		//req.session.flash={};
 	},
@@ -50,8 +51,8 @@ module.exports = {
 	index: function (req, res, next) {
 		// body...
 		//get an array of all users
-		console.log(new Date());
-		console.log(req.session.authenticated);
+		//console.log(new Date());
+		//console.log(req.session.authenticated);
 		User.find(function foundUsers (err, users) {
 			if(err) return next(err);
 
