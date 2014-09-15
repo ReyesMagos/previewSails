@@ -60,8 +60,11 @@ module.exports = {
 
 					req.session.authenticated= true;
 					req.session.User=user;
-
-					res.redirect('/user/show/'+ user.id);
+					if(req.session.User.admion){
+						res.redirect('/user/show/'+ user.id);
+						return;
+					}
+					
 			});
 
 

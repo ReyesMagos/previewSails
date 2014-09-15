@@ -54,6 +54,10 @@ module.exports = {
     encryptedPassword:{
       type:'string'
    },
+   admin:{
+    type:'boolean',
+    defaultsTo:false
+   },
 
      toJSON: function(){
          // body...

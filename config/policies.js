@@ -42,7 +42,9 @@ module.exports.policies = {
 
      user:{
       'new':"flash",
-      '*':"authenticated"
+      create:"flash",
+      show:"userCanSeeProfile",
+      '*':"admin"
      }
 
 		// For the action `nurture`, apply the 'isRabbitMother' policy

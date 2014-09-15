@@ -29,6 +29,12 @@ module.exports = {
 				
 				return res.redirect('/user/new');
 			}
+			req.session.authenticated= true;
+			req.session.User=user;
+			if(req.session.User.admin){
+				res.redirect('/user');
+				return;
+			}
 			/**
 			res.json(user);
 			req.session.flash={};

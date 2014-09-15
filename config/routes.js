@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    controller: "SessionController", action: "new"
+    view:'static/home'
   },
 
     '/user/form': {
