@@ -69,6 +69,20 @@ module.exports = {
       }
    },
 
+   beforeValidation: function (values, next){
+      console.log(values)
+
+      if(typeof values.admin1 !== 'undefined'){
+        console.log(values.admin)
+        if(values.admin1 === 'T'){
+          values.admin =true;
+        } else if(values.admin1 ==='F'){
+            values.admin=false;
+          }
+      }
+      next();
+   },
+
    beforeCreate: function  (values, next) {
      // body...
          if(!values.password || values.password != values.confirmation){

@@ -2,6 +2,11 @@
 			<p >&nbsp; </p>
 <div class="container">
 	<h1> Nombre: <%= user.name %> , Apellido: <%- user.last_name %>  </h1>
+	<% if(user.admin) { %>
+			<td> <img src="/images/Crown6.jpeg"> </td>
+			<%} else {%>
+			<td> <img src="/images/User.png"> </td>
+			<% } %>
 	<hr>
 	<h3> Contacto: <%= user.email %> </h3>
 	<a href="/user/edit/<%= user.id %>">Editar</a>

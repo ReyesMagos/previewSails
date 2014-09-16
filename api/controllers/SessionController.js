@@ -34,7 +34,9 @@ module.exports = {
 			// body...
 			if(err) return next(err);
 
+
 			if(!user){
+
 				var noAccountError=[{name:'noAccount', message:"La direccion de Email " + req.param('email')+ " no fue encontrada"}]
 				req.session.flash={
 					err: noAccountError
@@ -46,7 +48,7 @@ module.exports = {
 
 			bcrypt.compare(req.param('password'), user.encryptedPassword, function (err, valid) {
 				// body...
-				if(err) return next(err);
+				if(err)return next(err);
 
 
 					if(!valid){
@@ -57,14 +59,16 @@ module.exports = {
 						res.redirect('/session/new');
 						return;
 					}
+					console.log('validado');
 
 					req.session.authenticated= true;
 					req.session.User=user;
-					if(req.session.User.admion){
-						res.redirect('/user/show/'+ user.id);
+
+					if(req.session.User.admin){
+						res.redirect('/user');
 						return;
 					}
-					
+					res.redirect('/user/show/'+ user.id);
 			});
 
 
