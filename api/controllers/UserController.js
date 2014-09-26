@@ -12,21 +12,36 @@ module.exports = {
 	'new':function (req,res) {
 		// body...
 		//res.locals.flash=_.clone(req.session.flash);
+		
 		res.view();
 		//req.session.flash={};
 	},
 	create: function (req,res,next) {
 		// body...
-		User.create(req.params.all(), function userCreated (err,user) {
-			// body...
+		var userObj={
+				username: req.param('username'),
+				email: req.param('email'),
+				name: req.param('name'),
+				last: req.param('last_name'),
+				country: req.param('country'),
+				age: req.param('age'),
+				genere: req.param('genere'),
+				password: req.param('password'),
+				confirmation: req.param('confirmation')	
+			}
+		User.create(userObj, function userCreated (err,user) {
 			if(err){
 				console.log(err);
 				req.session.flash={
 					err:err
 				}
-		
-				
 				return res.redirect('/user/new');
+			}
+			req.session.authenticated= true;
+			req.session.User=user;
+			if(req.session.User.admin){
+				res.redirect('/user');
+				return;
 			}
 			/**
 			res.json(user);
@@ -50,8 +65,9 @@ module.exports = {
 	index: function (req, res, next) {
 		// body...
 		//get an array of all users
-		console.log(new Date());
-		console.log(req.session.authenticated);
+		//console.log(new Date());
+		//console.log(req.session.authenticated);
+		console.log('hello');
 		User.find(function foundUsers (err, users) {
 			if(err) return next(err);
 
@@ -75,7 +91,32 @@ module.exports = {
 
 	update:function (req, res, next) {
 		// body...
-		User.update(req.param('id'), req.params.all(),function userUpdate(err, user)  {
+		if(req.session.User.admin){
+			var userObj={
+				username: req.param('username'),
+				email: req.param('email'),
+				name: req.param('name'),
+				last: req.param('last_name'),
+				country: req.param('country'),
+				age: req.param('age'),
+				genere: req.param('genere'),
+				admin: req.param('admin')
+
+			}
+		}else{
+			var userObj={
+				username: req.param('username'),
+				email: req.param('email'),
+				name: req.param('name'),
+				last: req.param('last_name'),
+				country: req.param('country'),
+				age: req.param('age'),
+				genere: req.param('genere')
+			}
+
+		}
+
+		User.update(req.param('id'),userObj,function userUpdate(err, user)  {
 			if(err) {
 				return res.redirect('/user/edit'+req.param('id'));
 			}

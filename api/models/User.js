@@ -54,6 +54,10 @@ module.exports = {
     encryptedPassword:{
       type:'string'
    },
+   admin:{
+    type:'boolean',
+    defaultsTo:false
+   },
 
      toJSON: function(){
          // body...
@@ -63,6 +67,20 @@ module.exports = {
        delete obj.encryptedPassword
         return obj;
       }
+   },
+
+   beforeValidation: function (values, next){
+      console.log(values)
+
+      if(typeof values.admin1 !== 'undefined'){
+        console.log(values.admin)
+        if(values.admin1 === 'T'){
+          values.admin =true;
+        } else if(values.admin1 ==='F'){
+            values.admin=false;
+          }
+      }
+      next();
    },
 
    beforeCreate: function  (values, next) {

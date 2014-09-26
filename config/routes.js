@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'static/singUp'
+    view:'static/home'
   },
 
     '/user/form': {

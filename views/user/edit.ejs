@@ -17,11 +17,30 @@
 		<input value="<%= user.age %>" name="age" type="number" class="form-control"/>
 		<label >Pais</label>
 		<input value="<%= user.country %>" name="country" type="text" class="form-control"/>
-		<label >Genero</label>
-		<select name="genere" >
+		
+		<%if(session.authenticated && session.User.admin){%>
+		<label>Admin</label>
+		<select name="admin1" class="form-control">
+			
+			<%if(user.admin){%>
+				<option value="T" selected>True</option>
+				<option value="F">False</option>
+			<% } else { %>
+				<option value="T">True</option>
+				<option value="F" selected>False</option>
+			<% } %>
+	
+		</select>
+		<% } %>
+
+		<label>Genero</label>
+		<select name="genere" class="form-control">
 		<option value="M" selected>M</option>
 		<option value="F">F</option>
 		</select>
+
+		<p >&nbsp; </p>
+	
 		 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Guardar"/>
 	 	 <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 
