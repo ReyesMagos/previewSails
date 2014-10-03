@@ -53,6 +53,9 @@ module.exports = {
 
     encryptedPassword:{
       type:'string'
+   },online:{
+      type:'string',
+      defaultsTo:false
    },
    admin:{
     type:'boolean',

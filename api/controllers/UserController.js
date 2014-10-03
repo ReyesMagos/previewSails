@@ -22,23 +22,33 @@ module.exports = {
 				username: req.param('username'),
 				email: req.param('email'),
 				name: req.param('name'),
-				last: req.param('last_name'),
+				last_name: req.param('last_name'),
 				country: req.param('country'),
 				age: req.param('age'),
 				genere: req.param('genere'),
 				password: req.param('password'),
 				confirmation: req.param('confirmation')	
 			}
+
 		User.create(userObj, function userCreated (err,user) {
 			if(err){
 				console.log(err);
 				req.session.flash={
 					err:err
 				}
-				return res.redirect('/user/new');
+				res.redirect('/user/new');
+				return;
 			}
+			
 			req.session.authenticated= true;
 			req.session.User=user;
+
+			user.online=true;
+			user.save(function (err, user) {
+				// body...
+				if(err)
+					return next(err);
+
 			if(req.session.User.admin){
 				res.redirect('/user');
 				return;
@@ -48,6 +58,9 @@ module.exports = {
 			req.session.flash={};
 			*/
 			res.redirect('/user/show/'+user.id);
+
+			});
+			
 		});
 	},
 	show:function  (req,res,next) {
@@ -96,7 +109,7 @@ module.exports = {
 				username: req.param('username'),
 				email: req.param('email'),
 				name: req.param('name'),
-				last: req.param('last_name'),
+				last_name: req.param('last_name'),
 				country: req.param('country'),
 				age: req.param('age'),
 				genere: req.param('genere'),
@@ -108,7 +121,7 @@ module.exports = {
 				username: req.param('username'),
 				email: req.param('email'),
 				name: req.param('name'),
-				last: req.param('last_name'),
+				last_name: req.param('last_name'),
 				country: req.param('country'),
 				age: req.param('age'),
 				genere: req.param('genere')
@@ -127,15 +140,26 @@ module.exports = {
 	destroy: function (req, res, next) {
 
 		User.findOne(req.param('id'), function foundUser(err, user)  {
-			if(err) return next(err);
-			if(!user) return next('El Usuario no existe.');
-				
-				User.destroy(req.param('id'),function userDestroyed (err) {
-					// body...
-					if(err) return next(err);
-				});
+			var userId= req.session.User.id;
 
-				res.redirect('/user');
+			User.update(userId,{
+				online:false	
+			},function (err) {
+				// body...
+						if(err) return next(err);
+						req.session.destroy();
+							res.redirect('/session/new');
+			});
+			
+			//if(err) return next(err);
+			//if(!user) return next('El Usuario no existe.');
+				
+			//	User.destroy(req.param('id'),function userDestroyed (err) {
+					// body...
+			//		if(err) return next(err);
+			//	});
+
+			
 		});
 	}
 
